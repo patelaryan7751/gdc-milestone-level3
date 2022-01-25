@@ -160,66 +160,73 @@ $ python tasks.py runserver # Starts the tasks management server"""
         self.read_completed()
         pendingString = ""
         for priority in sorted(self.current_items):
+
+            # Pending task page HTML implementation
+
             pendingString = pendingString + \
                 f"""
-                <li class="flex py-4 first:pt-0 last:pb-0 ">
-      <img class="h-30 w-20 rounded-full" src="https://icon-library.com/images/task-icon-png/task-icon-png-24.jpg" alt="" />
-      <div class="ml-3 overflow-hidden">
-        <p class="text-xl font-medium text-slate-900">Name: {self.current_items[priority]}</p>
-        <p class="text-sm text-slate-500 truncate">Priority: #{priority}</p>
-      </div>
-    </li>
+<li class="flex py-4 first:pt-0 last:pb-0 ">
+   <img class="h-30 w-20 rounded-full" src="https://icon-library.com/images/task-icon-png/task-icon-png-24.jpg" alt="" />
+   <div class="ml-3 overflow-hidden">
+      <p class="text-xl font-medium text-slate-900">Name: {self.current_items[priority]}</p>
+      <p class="text-sm text-slate-500 truncate">Priority: #{priority}</p>
+   </div>
+</li>       
                 """
         pendingHtml = f"""
 <!doctype html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-<div class="grid grid-cols-1 divide-y">
-  <div class="bg-slate-900 flex justify-start" >
-  <div class="mb-2 mt-2 ml-3">
-  <h1 class="mt-3 text-2xl font-bold text-slate-50"><a href="#">Task
-  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block">
-    <span class="relative text-white">Manager</span>
-  </span>
-  </a></h1></div>
-  <div class="ml-6 sm:visible md:visible lg:visible"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
-  <a href="http://localhost:8000/tasks">Pending <span class="font-bold">{len(self.current_items)}</span></a></button></div>
-  <div class="ml-6"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
-  <a href="http://localhost:8000/completed">Completed <span class="font-bold">{len(self.completed_items)}</span></a></button></div>
-  <br><br><br>
-</div>
-<div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
-<div>
-<br><br>
-<blockquote class="text-2xl font-semibold italic text-center text-slate-900">
-  Manage your Tasks
-  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-    <span class="relative text-white">like a pro</span>
-  </span>
-  with us, don't worry we got your back.
-</blockquote>
-<img src="https://vectorforfree.com/wp-content/uploads/2020/03/Working_Men_VectorForFree.png" />
-</div>
-<div>
-<div class="text-center">
-<div class="border-2 border-orange-500 px-2 py-2  mt-4 mx-2" style="height="auto">
-  <h1 class="text-orange-500 text-2xl font-bold">
-    Incomplete Tasks
-  </h1>
-<ul role="list" class="p-6 divide-y divide-orange-500">
-   {pendingString}
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.tailwindcss.com"></script>
+   </head>
+   <body>
+      <div class="grid grid-cols-1 divide-y">
+         <div class="bg-slate-900 flex justify-start" >
+            <div class="mb-2 mt-2 ml-3">
+               <h1 class="mt-3 text-2xl font-bold text-slate-50"><a href="#">Task
+                  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block">
+                  <span class="relative text-white">Manager</span>
+                  </span>
+                  </a>
+               </h1>
+            </div>
+            <div class="ml-6 sm:visible md:visible lg:visible"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
+               <a href="http://localhost:8000/tasks">Pending <span class="font-bold">{len(self.current_items)}</span></a></button>
+            </div>
+            <div class="ml-6"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
+               <a href="http://localhost:8000/completed">Completed <span class="font-bold">{len(self.completed_items)}</span></a></button>
+            </div>
+            <br><br><br>
+         </div>
+         <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
+            <div>
+               <br><br>
+               <blockquote class="text-2xl font-semibold italic text-center text-slate-900">
+                  Manage your Tasks
+                  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                  <span class="relative text-white">like a pro</span>
+                  </span>
+                  with us, don't worry we got your back.
+               </blockquote>
+               <img src="https://vectorforfree.com/wp-content/uploads/2020/03/Working_Men_VectorForFree.png" />
+            </div>
+            <div>
+               <div class="text-center">
+                  <div class="border-2 border-orange-500 px-2 py-2  mt-4 mx-2" style="height="auto">
+                     <h1 class="text-orange-500 text-2xl font-bold">
+                        Incomplete Tasks
+                     </h1>
+                     <ul role="list" class="p-6 divide-y divide-orange-500">
+                        {pendingString}
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>
         """
         return f"{pendingHtml}"
@@ -230,66 +237,73 @@ $ python tasks.py runserver # Starts the tasks management server"""
         self.read_current()
         completedString = ""
         for index, completed_task in enumerate(sorted(self.completed_items)):
+
+            # Completed task page HTML implementation
+
             completedString = completedString + \
                 f"""
                 <li class="flex py-4 first:pt-0 last:pb-0 ">
-      <img class="h-30 w-20 rounded-full" src="https://icon-library.com/images/task-icon-png/task-icon-png-24.jpg" alt="" />
-      <div class="ml-3 overflow-hidden">
-        <p class="text-xl font-medium text-slate-900">Name: {completed_task}</p>
-        <p class="text-sm text-slate-500 truncate">Number: #{index+1}</p>
-      </div>
-    </li>
+   <img class="h-30 w-20 rounded-full" src="https://icon-library.com/images/task-icon-png/task-icon-png-24.jpg" alt="" />
+   <div class="ml-3 overflow-hidden">
+      <p class="text-xl font-medium text-slate-900">Name: {completed_task}</p>
+      <p class="text-sm text-slate-500 truncate">Number: #{index+1}</p>
+   </div>
+</li>
                 """
         completedHtml = f"""
 <!doctype html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-<div class="grid grid-cols-1 divide-y">
-  <div class="bg-slate-900 flex justify-start" >
-  <div class="mb-2 mt-2 ml-3">
-  <h1 class="mt-3 text-2xl font-bold text-slate-50"><a href="#">Task
-  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block">
-    <span class="relative text-white">Manager</span>
-  </span>
-  </a></h1></div>
-  <div class="ml-6 sm:visible md:visible lg:visible"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
-  <a href="http://localhost:8000/tasks">Pending <span class="font-bold">{len(self.current_items)}</span></a></button></div>
-  <div class="ml-6"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
-  <a href="http://localhost:8000/completed">Completed <span class="font-bold">{len(self.completed_items)}</span></a></button></div>
-  <br><br><br>
-</div>
-<div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
-<div>
-<br><br>
-<blockquote class="text-2xl font-semibold italic text-center text-slate-900">
-  Manage your Tasks
-  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-    <span class="relative text-white">like a pro</span>
-  </span>
-  with us, don't worry we got your back.
-</blockquote>
-<img src="https://vectorforfree.com/wp-content/uploads/2020/03/Working_Men_VectorForFree.png" />
-</div>
-<div>
-<div class="text-center">
-<div class="border-2 border-orange-500 px-2 py-2  mt-4 mx-2" style="height="auto">
-  <h1 class="text-orange-500 text-2xl font-bold">
-    Completed Tasks
-  </h1>
-<ul role="list" class="p-6 divide-y divide-orange-500">
-   {completedString}
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.tailwindcss.com"></script>
+   </head>
+   <body>
+      <div class="grid grid-cols-1 divide-y">
+         <div class="bg-slate-900 flex justify-start" >
+            <div class="mb-2 mt-2 ml-3">
+               <h1 class="mt-3 text-2xl font-bold text-slate-50"><a href="#">Task
+                  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block">
+                  <span class="relative text-white">Manager</span>
+                  </span>
+                  </a>
+               </h1>
+            </div>
+            <div class="ml-6 sm:visible md:visible lg:visible"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
+               <a href="http://localhost:8000/tasks">Pending <span class="font-bold">{len(self.current_items)}</span></a></button>
+            </div>
+            <div class="ml-6"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
+               <a href="http://localhost:8000/completed">Completed <span class="font-bold">{len(self.completed_items)}</span></a></button>
+            </div>
+            <br><br><br>
+         </div>
+         <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
+            <div>
+               <br><br>
+               <blockquote class="text-2xl font-semibold italic text-center text-slate-900">
+                  Manage your Tasks
+                  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                  <span class="relative text-white">like a pro</span>
+                  </span>
+                  with us, don't worry we got your back.
+               </blockquote>
+               <img src="https://vectorforfree.com/wp-content/uploads/2020/03/Working_Men_VectorForFree.png" />
+            </div>
+            <div>
+               <div class="text-center">
+                  <div class="border-2 border-orange-500 px-2 py-2  mt-4 mx-2" style="height="auto">
+                     <h1 class="text-orange-500 text-2xl font-bold">
+                        Completed Tasks
+                     </h1>
+                     <ul role="list" class="p-6 divide-y divide-orange-500">
+                        {completedString}
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>
         """
         return f"{completedHtml}"
