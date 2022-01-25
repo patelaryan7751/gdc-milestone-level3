@@ -94,11 +94,10 @@ $ python tasks.py runserver # Starts the tasks management server"""
             print('Added task: "{}" with priority {}'.format(task, priority))
 
         def PriorityCheck(priority, task):
-            if priority in self.current_items.keys():
+            while priority in self.current_items.keys():
                 modifyPriority(priority)
-                addTaskWithPriority(priority, task)
-            else:
-                addTaskWithPriority(priority, task)
+            addTaskWithPriority(priority, task)
+
         PriorityCheck(priority, task)
 
     def done(self, args):
