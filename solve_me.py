@@ -184,18 +184,18 @@ $ python tasks.py runserver # Starts the tasks management server"""
    <body>
       <div class="grid grid-cols-1 divide-y">
          <div class="bg-slate-900 flex justify-start" >
-            <div class="mb-2 mt-2 ml-3">
-               <h1 class="mt-3 text-2xl font-bold text-slate-50"><a href="#">Task
+            <div class="mb-2 mt-2 ml-2">
+               <h1 class="mt-3 lg:text-2xl md:text-2xl font-bold text-slate-50"><a href="#">Task
                   <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block">
                   <span class="relative text-white">Manager</span>
                   </span>
                   </a>
                </h1>
             </div>
-            <div class="ml-6 sm:visible md:visible lg:visible"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
+            <div class="ml-3"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
                <a href="http://localhost:8000/tasks">Pending <span class="font-bold">{len(self.current_items)}</span></a></button>
             </div>
-            <div class="ml-6"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
+            <div class="ml-3"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
                <a href="http://localhost:8000/completed">Completed <span class="font-bold">{len(self.completed_items)}</span></a></button>
             </div>
             <br><br><br>
@@ -261,18 +261,18 @@ $ python tasks.py runserver # Starts the tasks management server"""
    <body>
       <div class="grid grid-cols-1 divide-y">
          <div class="bg-slate-900 flex justify-start" >
-            <div class="mb-2 mt-2 ml-3">
-               <h1 class="mt-3 text-2xl font-bold text-slate-50"><a href="#">Task
+            <div class="mb-2 mt-2 ml-2">
+               <h1 class="mt-3 lg:text-2xl md:text-2xl font-bold text-slate-50"><a href="#">Task
                   <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block">
                   <span class="relative text-white">Manager</span>
                   </span>
                   </a>
                </h1>
             </div>
-            <div class="ml-6 sm:visible md:visible lg:visible"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
+            <div class="ml-3"><button class="border-2 rounded-full border-rose-500 bg-rose-500 text-slate-50 text-1xl mt-5 px-3">
                <a href="http://localhost:8000/tasks">Pending <span class="font-bold">{len(self.current_items)}</span></a></button>
             </div>
-            <div class="ml-6"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
+            <div class="ml-3"><button class="border-2 rounded-full border-green-500 bg-green-500 text-slate-50 text-1xl mt-5 px-3">
                <a href="http://localhost:8000/completed">Completed <span class="font-bold">{len(self.completed_items)}</span></a></button>
             </div>
             <br><br><br>
